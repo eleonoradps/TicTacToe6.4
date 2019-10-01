@@ -2,8 +2,17 @@
 #include <algorithm>
 #include <vector>
 
-void GenerateMap()
+void GenerateMap(std::vector<int>& board)
 {
+	const int SizeBoard = 9;
+
+	board.resize(SizeBoard);
+
+	for (int i = 0; i < SizeBoard; i++) 
+	{
+		board[i] = ' ';
+	}
+
 	std::cout << "\t\t\t Welcome to Tic Tac Toe Game \n";
 	std::cout << "\t\t\t Make your move by entering a number between 0 and 8 \n";
 	std::cout << "\t\t\t 0 | 1 | 2 \n";
