@@ -1,7 +1,7 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
-
+#include <time.h>
 void GenerateMap(std::vector<int>& board)
 {
 	const int SizeBoard = 9;
@@ -34,19 +34,35 @@ void ShowMap(char board[])
 	std::cout << "\t\t\t" << board[6] << " | " << board[7] << " | " << board[8] << "\n";
 }
 
-void SetNewPosition(char board[])
+void SetNewPosition(char board[],int turn)
 {
 	int userChoice;
 	std::cin >> userChoice;
 
-	if (board[userChoice] != ' ')
-	{
-		std::cout << "Please choose an empty case";
-		SetNewPosition(board);
+	if (turn % 2 == 0) {
+		if (board[userChoice] != ' ')
+		{
+			std::cout << "Please choose an empty case";
+			SetNewPosition(board, turn);
+		}
+		else
+		{
+			board[userChoice] = 'X';
+		}
 	}
 	else
 	{
-		board[userChoice] = 'X';
+		int randomNb = 0;
+		srand(static_cast<unsigned int>(time(0)));
+		randomNb = rand() % 9;
+		if(board[randomNb]!=' ')
+		{
+			SetNewPosition(board, turn);
+		}
+		else
+		{
+			board[randomNb] = 'O';
+		}
 	}
 }
 
@@ -143,7 +159,3 @@ bool CheckWin(char board[])
 
 
 
-int main() 
-{
-
-}
