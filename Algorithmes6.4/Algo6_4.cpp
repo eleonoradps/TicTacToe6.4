@@ -5,7 +5,6 @@
 void GenerateMap(std::vector<int>& board)
 {
 	const int SizeBoard = 9;
-
 	board.resize(SizeBoard);
 
 	for (int i = 0; i < SizeBoard; i++) 
@@ -21,6 +20,7 @@ void GenerateMap(std::vector<int>& board)
 	std::cout << "\t\t\t -------------- \n";
 	std::cout << "\t\t\t 6 | 7 | 8 \n";
 
+	
 }
 
 void ShowMap(char board[]) 
@@ -33,6 +33,26 @@ void ShowMap(char board[])
 	std::cout << "\t\t\t -------------- \n";
 	std::cout << "\t\t\t" << board[6] << " | " << board[7] << " | " << board[8] << "\n";
 }
+
+void SetNewPosition(char board[])
+{
+	int userChoice;
+	std::cin >> userChoice;
+
+	if (board[userChoice] != ' ')
+	{
+		std::cout << "Please choose an empty case";
+		SetNewPosition(board);
+	}
+	else
+	{
+		board[userChoice] = 'X';
+	}
+}
+
+void 
+
+
 
 
 
